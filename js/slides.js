@@ -1,61 +1,98 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.querySelectorAll('.slide-wrapper');
-    const parallaxHeight = document.querySelector('.parallax').offsetHeight;
-    const slideHeight = window.innerHeight;
-    const totalHeight = document.documentElement.scrollHeight;
+class SlideShow {
+  constructor() {
+    this.currentSlide = 0;
+    this.slides = document.querySelectorAll('.slide');
+    this.dots = document.querySelectorAll('.nav-dot');
+    this.upArrow = document.querySelector('.nav-up');
+    this.downArrow = document.querySelector('.nav-down');
+    this.slidesContainer = document.querySelector('.slides-container');
+    this.totalSlides = this.slides.length;
+    this.isScrolling = false;
+    this.scrollTimeout = null;
 
-    // Set the number of slides CSS variable
-    document.documentElement.style.setProperty('--num-slides', slides.length);
+    this.init();
+    this.updateArrowVisibility(); // Initial arrow visibility
+  }
 
-    function updateSlides() {
-        const scrollY = window.scrollY;
-        const maxScroll = totalHeight - window.innerHeight;
-        const scrollPosition = scrollY - parallaxHeight;
+  init() {
+    // Add click handlers to dots
+    this.dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => this.goToSlide(index));
+    });
 
-        // Before slides section
-        if (scrollY < parallaxHeight) {
-            slides.forEach((slide, index) => {
-                if (index === 0) {
-                    slide.classList.add('active');
-                } else {
-                    slide.classList.remove('active');
-                }
-            });
+    // Add click handlers to arrows
+    this.upArrow.addEventListener('click', () => this.goToPreviousSlide());
+    this.downArrow.addEventListener('click', () => this.goToNextSlide());
 
-            // Calculate which slide should be visible based on scroll position
-            let slideIndex;
+    // Add scroll handler
+    window.addEventListener('scroll', () => this.handleScroll());
+  }
 
-            // If we're at the bottom of the page, show the last slide
-            if (scrollY >= maxScroll - 25) {
-                slideIndex = slides.length - 1;
-            } else {
-                slideIndex = Math.min(
-                    Math.floor(scrollPosition / slideHeight),
-                    slides.length - 1
-                );
-            }
-
-            // Update slide visibility
-            slides.forEach((slide, index) => {
-                if (index === slideIndex) {
-                    slide.classList.add('active');
-                } else {
-                    slide.classList.remove('active');
-                }
-            });
-        }
-
-        // Update on scroll
-        window.addEventListener('scroll', () => {
-            requestAnimationFrame(updateSlides);
-        });
-
-        // Initial update
-        updateSlides();
-
-        // Update on resize
-        window.addEventListener('resize', () => {
-            requestAnimationFrame(updateSlides);
-        });
+  updateArrowVisibility() {
+    // Hide up arrow if on first slide
+    if (this.currentSlide === 0) {
+      this.upArrow.classList.add('hidden');
+    } else {
+      this.upArrow.classList.remove('hidden');
     }
+
+    // Hide down arrow if on last slide
+    if (this.currentSlide === this.totalSlides - 1) {
+      this.downArrow.classList.add('hidden');
+    } else {
+      this.downArrow.classList.remove('hidden');
+    }
+  }
+
+  handleScroll() {
+    // Clear the timeout if it exists
+    if (this.scrollTimeout) {
+      clearTimeout(this.scrollTimeout);
+    }
+
+    // Set a timeout to run after scrolling ends
+    this.scrollTimeout = setTimeout(() => {
+      const containerRect = this.slidesContainer.getBoundingClientRect();
+      const containerBottom = containerRect.bottom;
+      const windowHeight = window.innerHeight;
+
+      // If we've scrolled past the container and we're not at the last slide
+      if (containerBottom <= windowHeight && this.currentSlide < this.totalSlides - 1) {
+        this.goToNextSlide();
+      }
+    }, 150);
+  }
+
+  goToNextSlide() {
+    if (this.currentSlide < this.totalSlides - 1) {
+      this.goToSlide(this.currentSlide + 1);
+    }
+  }
+
+  goToPreviousSlide() {
+    if (this.currentSlide > 0) {
+      this.goToSlide(this.currentSlide - 1);
+    }
+  }
+
+  goToSlide(index) {
+    // Remove active class from current slide and dot
+    this.slides[this.currentSlide].classList.remove('active');
+    this.dots[this.currentSlide].classList.remove('active');
+
+    // Update current slide index
+    this.currentSlide = index;
+
+    // Add active class to new slide and dot
+    this.slides[this.currentSlide].classList.add('active');
+    this.dots[this.currentSlide].classList.add('active');
+
+    // Update arrow visibility
+    this.updateArrowVisibility();
+  }
+}
+
+// Initialize the slideshow when the DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  new SlideShow();
 }); 
