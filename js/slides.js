@@ -7,20 +7,23 @@ class SlideShow {
     this.downArrow = document.querySelector('.nav-down');
     this.slidesContainer = document.querySelector('.slides-container');
     this.totalSlides = this.slides.length;
-    this.isSlideMode = false; // Track if we're in slide navigation state
+    this.isSlideMode = false; // Track if we're in slide navigation mode
 
     this.init();
     this.updateArrowVisibility(); // Initial arrow visibility
   }
 
   init() {
+    // Add click handlers to dots
     this.dots.forEach((dot, index) => {
       dot.addEventListener('click', () => this.goToSlide(index));
     });
 
+    // Add click handlers to arrows
     this.upArrow.addEventListener('click', () => this.goToPreviousSlide());
     this.downArrow.addEventListener('click', () => this.goToNextSlide());
 
+    // Add wheel event handler
     window.addEventListener('wheel', (ev) => this.handleWheel(ev), { passive: false });
   }
 
@@ -47,7 +50,7 @@ class SlideShow {
   handleWheel(ev) {
     const isAtBottom = this.isAtBottom();
 
-    // If we're in slide state or at bottom we may need to scroll
+    // If we're in slide mode or at the bottom, we might need to handle the scroll
     if (this.isSlideMode || isAtBottom) {
       if (ev.deltaY > 0) { // Scrolling down
         if (isAtBottom) {
@@ -63,13 +66,14 @@ class SlideShow {
             ev.preventDefault();
             this.goToPreviousSlide();
           } else {
+            // Exit slide mode when reaching first slide
             this.isSlideMode = false;
           }
         }
       }
     }
 
-    // Exit slide state if not at bottom
+    // Exit slide mode if we're no longer at the bottom
     if (!isAtBottom) {
       this.isSlideMode = false;
     }
@@ -88,18 +92,23 @@ class SlideShow {
   }
 
   goToSlide(index) {
+    // Remove active class from current slide and dot
     this.slides[this.currentSlide].classList.remove('active');
     this.dots[this.currentSlide].classList.remove('active');
 
+    // Update current slide index
     this.currentSlide = index;
 
+    // Add active class to new slide and dot
     this.slides[this.currentSlide].classList.add('active');
     this.dots[this.currentSlide].classList.add('active');
 
+    // Update arrow visibility
     this.updateArrowVisibility();
   }
 }
 
+// Initialize the slideshow when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   new SlideShow();
 }); 

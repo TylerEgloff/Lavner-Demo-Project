@@ -1,22 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Merriweather:opsz@18..144&display=swap');
 
+:root {
+  --primary-color: #5d0d2c;
+  --text-color: #333;
+  --accent-color: #2196f3;
+  --accent-dark: #1976d2;
+  --success-color: #4CAF50;
+  --console-bg: #1e1e1e;
+  --white-transparent: rgba(255, 255, 255, 0.8);
+  --title-font: 'Bangers', cursive;
+  --body-font: 'Merriweather', serif;
+}
+
 * {
   margin: 0;
   padding: 0;
   width: 100%;
-}
-
-/* Firefox scrollbar */
-* {
   scrollbar-color: rgba(175, 175, 175, 0.5) rgba(90, 90, 90, 0.8);
 }
 
 body {
-  background-color: #5d0d2c;
+  background-color: var(--primary-color);
   margin: 0;
   padding: 0;
   overscroll-behavior-y: contain;
+  font-family: var(--body-font);
 }
 
 .parallax {
@@ -27,8 +36,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color:rgb(24,9,60);
-  background: linear-gradient(0deg, rgba(24,9,60,1) 45%, rgba(18,0,126,1) 100%);
+  color: rgb(24, 9, 60);
+  background: linear-gradient(0deg, rgba(24, 9, 60, 1) 45%, rgba(18, 0, 126, 1) 100%);
 }
 
 .parallax img {
@@ -74,7 +83,7 @@ body {
   width: auto;
   display: flex;
   align-items: center;
-  font-family: 'Bangers', cursive;
+  font-family: var(--title-font);
 }
 
 .python-logo {
@@ -94,7 +103,7 @@ body {
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(10, 205, 230, 0.5);
   width: auto;
-  font-family: 'Merriweather', serif;
+  font-family: var(--body-font);
 }
 
 #shooting-star-container {
@@ -109,36 +118,31 @@ body {
 }
 
 /* Media queries for mobile devices */
-@media screen and (max-width: 768px) {  
+@media screen and (max-width: 768px) {
   .title {
     text-shadow: 1px 1px 3px rgba(10, 205, 230, 0.3);
   }
 
   .title-name {
     text-shadow: 1px 1px 3px rgba(10, 205, 230, 0.2);
-  }
-  
-  .title-name {
     top: 77vh;
     right: 2vw;
   }
 
   .parallax #back {
     object-position: 35%;
-    padding-top:0px;
+    padding-top: 0px;
   }
 
   .parallax #front {
     object-position: 65%;
-    padding-top:25px;
+    padding-top: 25px;
   }
 
   .parallax #star {
-    padding-top:150px;
+    padding-top: 150px;
   }
-  
 }
-
 
 .slides {
   background-color: #5d0d2c !important;
@@ -158,15 +162,15 @@ body {
 }
 
 .slide-wrapper {
-  width: 85%;
-  height: 85vh;
+  width: 95%;
+  height: 90vh;
   margin: 0;
   box-sizing: border-box;
   position: relative;
 }
 
 .slide {
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--white-transparent);
   border-radius: 1rem;
   padding: 4rem;
   margin: 0 auto;
@@ -182,9 +186,9 @@ body {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease;
-  box-shadow: 
+  box-shadow:
     0 4px 6px rgba(0, 0, 0, 0.4),
-    inset 0 0 0 2px #5d0d2c,
+    inset 0 0 0 2px var(--primary-color),
     inset 0 0 0 3px rgba(172, 172, 172, 1),
     inset 0 0 8px rgba(0, 0, 0, 0.7);
 }
@@ -264,13 +268,14 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 1.25rem;
   box-sizing: border-box;
+  font-family: var(--body-font);
 }
 
 .slide-title {
-  font-family: 'Bangers', cursive;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-family: var(--title-font);
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
   color: #18093c;
   text-align: center;
   width: fit-content;
@@ -280,15 +285,16 @@ body {
   width: auto;
   height: auto;
   max-width: 90%;
-  max-height: 60%;
+  max-height: 35%;
   border-radius: 0.5rem;
   object-fit: contain;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .slide-text {
-  font-family: 'Merriweather', serif;
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  line-height: 1.6;
+  font-family: var(--body-font);
+  font-size: clamp(1rem, 2vw, 2rem);
+  line-height: 1.2s;
   color: #333;
   text-align: center;
   width: 100%;
@@ -299,40 +305,333 @@ body {
 /* Media queries for mobile devices */
 @media screen and (max-width: 768px) {
   .slides-container {
-    padding: 0.5rem;
+    padding: 1rem;
   }
-  
+
   .slide-wrapper {
-    width: 95%;
+    width: 100%;
+    height: 85vh;
   }
 
   .slide {
-    padding: 1.5rem;
+    padding: 2rem;
   }
 
   .slide-content {
-    gap: 1rem;
+    padding: 1rem;
   }
 
   .slide-image {
     max-width: 95%;
-    max-height: 45%;
   }
 
   .slide-navigation {
-    padding-left:7px;
+    padding-left: 10px;
   }
 
   .nav-dot {
-    width: 14px;
-    height: 14px;
-    min-width: 14px;
+    width: 12px;
+    height: 12px;
+    min-width: 12px;
   }
 
   .nav-arrow {
-    width: 14px;
-    height: 14px;
-    min-width: 14px;
-    font-size: 22px;
+    width: 12px;
+    height: 12px;
+    min-width: 12px;
+    font-size: 20px;
   }
+
+  .image-row {
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .minecraft-logo,
+  .qr-code,
+  .hci-logo {
+    max-width: 100px;
+    max-height: 100px;
+    margin: 0;
+  }
+
+  .camp-rules {
+    margin: 2rem 1rem;
+  }
+
+  .camp-rules li {
+    margin-bottom: 1.5rem;
+  }
+
+  .rule-emoji {
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+
+  .rule-text {
+    font-size: 1.6rem;
+  }
+
+  .code-console {
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+    width: 85%;
+  }
+}
+
+/* Additional slide styles */
+.qr-code {
+  width: clamp(100px, 20vw, 225px);
+  height: auto;
+  /* Maintain aspect ratio */
+  display: block;
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Container for the three images */
+.image-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+  padding: 0 1rem;
+}
+
+/* Style for Minecraft and HCI logos */
+.minecraft-logo,
+.hci-logo {
+  width: clamp(100px, 15vw, 150px);
+  height: auto;
+  object-fit: contain;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Style specifically for QR code */
+.qr-code {
+  width: clamp(150px, 20vw, 200px);
+  height: auto;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 768px) {
+  .image-row {
+    gap: 1rem;
+  }
+
+  .minecraft-logo,
+  .hci-logo {
+    width: clamp(50px, 5vw, 100px);
+  }
+
+  .qr-code {
+    width: clamp(100px, 15vw, 150px);
+  }
+}
+
+/* Slide 2 */
+.learning-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem auto;
+  text-align: left;
+  max-width: 800px;
+}
+
+.learning-list li {
+  font-size: clamp(1rem, 2vw, 2.2rem);
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+  position: relative;
+}
+
+.learning-list li::before {
+  content: "•";
+  color: #2196f3;
+  font-size: 2rem;
+  position: absolute;
+  left: 0;
+  top: -0.2rem;
+}
+
+.closing-remark {
+  font-size: clamp(1rem, 2vw, 2.4rem);
+  font-style: italic;
+  color: #2196f3;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+
+}
+
+/* Slide 3 */
+
+.slide-text.emphasis {
+  font-size: clamp(1rem, 2vw, 2.2rem);
+  font-weight: 600;
+  color: #2196f3;
+  margin-bottom: 1rem;
+}
+
+/* Company logos section */
+.company-logos {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.company-logo {
+  width: clamp(100px, 20vw, 200px);
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  filter: grayscale(100%);
+}
+
+.company-logo:hover {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+/* Code console styling */
+.code-console {
+  background-color: var(--console-bg);
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.console-input {
+  color: #ffffff;
+  font-size: clamp(0.8rem, 1.8vw, 1.8rem);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.prompt {
+  color: var(--accent-color);
+  margin-right: 1rem;
+  width: auto;
+  flex: 0 0 auto;
+}
+
+.console-output {
+  color: var(--success-color);
+  font-size: clamp(0.8rem, 1.8vw, 1.8rem);
+  padding-left: 3.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .company-logos {
+    gap: 1rem;
+    padding: 0 1rem;
+    justify-content: center;
+    width: auto;
+    margin: 1rem auto;
+  }
+
+  .company-logo {
+    width: clamp(80px, 25vw, 150px);
+    margin: 0.5rem;
+  }
+
+  .code-console {
+    padding: 1.5rem;
+    width: 85%;
+  }
+
+  .console-input,
+  .console-output {
+    font-size: clamp(0.7rem, 3vw, 1.2rem);
+  }
+
+  .console-output {
+    padding-left: 2rem;
+  }
+
+  .prompt {
+    margin-right: 0.5rem;
+  }
+}
+
+.camp-rules {
+  list-style: none;
+  padding: 0;
+  margin: 3rem auto;
+  max-width: 800px;
+}
+
+.camp-rules li {
+  font-size: clamp(1rem, 2.5vw, 2.5rem);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.rule-emoji {
+  font-size: clamp(1rem, 2.5vw, 2.5rem);
+  margin-right: 1.5rem;
+  width: auto;
+  flex: 0 0 auto;
+}
+
+.rule-text {
+  font-size: 2rem;
+  color: #333;
+}
+
+@media screen and (max-width: 768px) {
+  .camp-rules {
+    margin: 2rem 1rem;
+  }
+
+  .camp-rules li {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .rule-emoji {
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+
+  .rule-text {
+    font-size: 1.6rem;
+  }
+}
+
+.replit-link {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: clamp(1rem, 2vw, 2rem);
+}
+
+.replit-link a {
+  color: #2196f3;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.replit-link a:hover {
+  color: #1976d2;
+  text-decoration: underline;
 }

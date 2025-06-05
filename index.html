@@ -1,99 +1,150 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Lavner Demo Project</title>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <section class='parallax'>
-      <div id="shooting-star-container"></div>
-      <h1 class='title' style='z-index:5'>
-        Coding in Python
-        <svg class="python-logo" viewBox="0 0 256 255" xmlns="http://www.w3.org/2000/svg">
-          <path d="M126.916.072c-64.832 0-60.784 28.115-60.784 28.115l.072 29.128h61.868v8.745H41.631S.145 61.355.145 126.77c0 65.417 36.21 63.097 36.21 63.097h21.61v-30.356s-1.165-36.21 35.632-36.21h61.362s34.475.557 34.475-33.319V33.97S194.67.072 126.916.072zM92.802 19.66a11.12 11.12 0 0 1 11.13 11.13 11.12 11.12 0 0 1-11.13 11.13 11.12 11.12 0 0 1-11.13-11.13 11.12 11.12 0 0 1 11.13-11.13z"/>
-          <path d="M128.757 254.126c64.832 0 60.784-28.115 60.784-28.115l-.072-29.127H127.6v-8.745h86.441s41.486 4.705 41.486-60.712c0-65.416-36.21-63.096-36.21-63.096h-21.61v30.355s1.165 36.21-35.632 36.21h-61.362s-34.475-.557-34.475 33.32v56.013s-5.235 33.897 62.518 33.897zm34.114-19.586a11.12 11.12 0 0 1-11.13-11.13 11.12 11.12 0 0 1 11.13-11.131 11.12 11.12 0 0 1 11.13 11.13 11.12 11.12 0 0 1-11.13 11.13z"/>
-        </svg>
-      </h1>
-      <img src='pics/f.png' id='front' style='z-index:4'>
-      <img src='pics/b.png' id='back' style='z-index:3'>
-      <img src='pics/m.png' id='moon' style='z-index:2'>
-      <img src='pics/s.png' id='star' style='z-index:1'>
-      <h1 class='title-name' style='z-index:5'>Lavner Education</h1>
-    </section>
 
-    <div class="slides-container">
-      <div class="slide-wrapper">
-        <!-- First Slide -->
-        <div class="slide active">
-          <div class="slide-content">
-            <h2 class="slide-title">Lorum ipsum dolor sit amet.</h2>
-            <img src="pics/python-code.jpg" alt="QR Code" class="slide-image">
-            <p class="slide-text">Lorum ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-        </div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Lavner Demo Project</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
 
-        <!-- Second Slide -->
-        <div class="slide">
-          <div class="slide-content">
-            <h2 class="slide-title">Lorum ipsum dolor sit amet.</h2>
-            <img src="pics/python-code.jpg" alt="Python Variables Example" class="slide-image">
-            <p class="slide-text">Lorum ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-        </div>
+<body>
+  <section class='parallax'>
+    <div id="shooting-star-container"></div>
+    <h1 class='title' style='z-index:5'>
+      Coding in Python
+      <svg class="python-logo" viewBox="0 0 256 255" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M126.916.072c-64.832 0-60.784 28.115-60.784 28.115l.072 29.128h61.868v8.745H41.631S.145 61.355.145 126.77c0 65.417 36.21 63.097 36.21 63.097h21.61v-30.356s-1.165-36.21 35.632-36.21h61.362s34.475.557 34.475-33.319V33.97S194.67.072 126.916.072zM92.802 19.66a11.12 11.12 0 0 1 11.13 11.13 11.12 11.12 0 0 1-11.13 11.13 11.12 11.12 0 0 1-11.13-11.13 11.12 11.12 0 0 1 11.13-11.13z" />
+        <path
+          d="M128.757 254.126c64.832 0 60.784-28.115 60.784-28.115l-.072-29.127H127.6v-8.745h86.441s41.486 4.705 41.486-60.712c0-65.416-36.21-63.096-36.21-63.096h-21.61v30.355s1.165 36.21-35.632 36.21h-61.362s-34.475-.557-34.475 33.32v56.013s-5.235 33.897 62.518 33.897zm34.114-19.586a11.12 11.12 0 0 1-11.13-11.13 11.12 11.12 0 0 1 11.13-11.131 11.12 11.12 0 0 1 11.13 11.13 11.12 11.12 0 0 1-11.13 11.13z" />
+      </svg>
+    </h1>
+    <img src='pics/f.png' id='front' style='z-index:4'>
+    <img src='pics/b.png' id='back' style='z-index:3'>
+    <img src='pics/m.png' id='moon' style='z-index:2'>
+    <img src='pics/s.png' id='star' style='z-index:1'>
+    <h1 class='title-name' style='z-index:5'>Lavner Education</h1>
+  </section>
 
-        <!-- Third Slide -->
-        <div class="slide">
-          <div class="slide-content">
-            <h2 class="slide-title">Lorum ipsum dolor sit amet.</h2>
-            <img src="pics/python-code.jpg" alt="Python Control Flow Example" class="slide-image">
-            <p class="slide-text">Lorum ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-        </div>
-
-        <!-- Fourth Slide -->
-        <div class="slide">
-          <div class="slide-content">
-            <h2 class="slide-title">Lorum ipsum dolor sit amet.</h2>
-            <img src="pics/python-code.jpg" alt="Python Functions Example" class="slide-image">
-            <p class="slide-text">Lorum ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-        </div>
-
-        <!-- Fifth Slide -->
-        <div class="slide">
-          <div class="slide-content">
-            <h2 class="slide-title">Lorum ipsum dolor sit amet.</h2>
-            <img src="pics/python-code.jpg" alt="Python Data Structures Example" class="slide-image">
-            <p class="slide-text">Lorum ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-        </div>
-
-        <!-- Sixth Slide -->
-        <div class="slide">
-          <div class="slide-content">
-            <h2 class="slide-title">Lorum ipsum dolor sit amet.</h2>
-            <img src="pics/python-code.jpg" alt="Python OOP Example" class="slide-image">
-            <p class="slide-text">Lorum ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <div class="slides-container">
+    <div class="slide-wrapper">
+      <div class="slide active">
+        <div class="slide-content">
+          <h2 class="slide-title">Meet your instructor</h2>
+          <img src="slide-pics/self-portrait.jpg" alt="QR Code" class="slide-image">
+          <p class="slide-text">My name is Tyler Egloff. I study Computer Science at Northern Kentucky University.</p>
+          <p class="slide-text">I'll be your instructor for python programming throughout the week!</p>
+          <div class="image-row">
+            <img src="slide-pics/minecraft.png" alt="Minecraft Logo" class="minecraft-logo">
+            <img src="slide-pics/qr-code.svg" alt="QR Code to these slides" class="qr-code">
+            <img src="slide-pics/hci-logo.png" alt="HCI Logo" class="hci-logo">
           </div>
         </div>
       </div>
 
-      <div class="slide-navigation">
-        <button class="nav-arrow nav-up" aria-label="Previous slide">▲</button>
-        <button class="nav-dot active" data-slide="0"></button>
-        <button class="nav-dot" data-slide="1"></button>
-        <button class="nav-dot" data-slide="2"></button>
-        <button class="nav-dot" data-slide="3"></button>
-        <button class="nav-dot" data-slide="4"></button>
-        <button class="nav-dot" data-slide="5"></button>
-        <button class="nav-arrow nav-down" aria-label="Next slide">▼</button>
+      <div class="slide">
+        <div class="slide-content">
+          <h2 class="slide-title">What We'll Learn This Week</h2>
+          <ul class="learning-list">
+            <li>What is Python?</li>
+            <li>Making a <a href="https://tyleregloff.github.io/SnakeGamePython/" target="_blank">mini game</a></li>
+            <li>Making art with code</li>
+            <li>Building a cool project you can take home and show off!</li>
+          </ul>
+          <p class="closing-remark">By the end of this week, you'll be writing real code!</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-content">
+          <h2 class="slide-title">What is Python?</h2>
+          <p class="slide-text emphasis">Python is NOT a snake! 🐍</p>
+          <p class="slide-text">Python is a programming language. It lets us give instructions to the computer and
+            create our own cool programs.</p>
+          <div class="company-logos">
+            <img src="slide-pics/youtube-logo.png" alt="YouTube Logo" class="company-logo">
+            <img src="slide-pics/nasa-logo.png" alt="NASA Logo" class="company-logo">
+            <img src="slide-pics/netflix-logo.png" alt="Netflix Logo" class="company-logo">
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-content">
+          <h2 class="slide-title">Let's See Some Code!</h2>
+          <div class="code-console">
+            <div class="console-input">
+              <span class="prompt">&gt;&gt;&gt;</span> print("Hello World!")
+            </div>
+            <div class="console-output">
+              Hello World!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-content">
+          <h2 class="slide-title">Camp Rules</h2>
+          <ul class="camp-rules">
+            <li>
+              <span class="rule-emoji">🤝</span>
+              <span class="rule-text">Be kind and help each other</span>
+            </li>
+            <li>
+              <span class="rule-emoji">🤔</span>
+              <span class="rule-text">Ask questions!</span>
+            </li>
+            <li>
+              <span class="rule-emoji">💪</span>
+              <span class="rule-text">Try your best</span>
+            </li>
+            <li>
+              <span class="rule-emoji">🎮</span>
+              <span class="rule-text">Have fun!</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-content">
+          <h2 class="slide-title">Let's Get Started!</h2>
+          <div class="code-console">
+            <div class="console-input">
+              <span class="prompt">&gt;&gt;&gt;</span> name = "Tyler"
+            </div>
+            <div class="console-input">
+              <span class="prompt">&gt;&gt;&gt;</span> print("Hello, " + name + "!")
+            </div>
+            <div class="console-output">
+              Hello, Tyler!
+            </div>
+          </div>
+          <p class="replit-link">
+            Join us at: <a href="https://replit.com/@TylerEgloff/Python-Summer-Camp" target="_blank">replit.com/@TylerEgloff/Python-Summer-Camp</a>
+          </p>
+          <img src="slide-pics/qr-code-replit.svg" alt="QR Code to Replit" class="qr-code">
+        </div>
       </div>
     </div>
 
-    <script name='text/javascript' src='js/parallax.js'></script>
-    <script name='text/javascript' src='js/shootingStars.js'></script>
-    <script name='text/javascript' src='js/slides.js'></script>
-  </body>
-</html> 
+    <div class="slide-navigation">
+      <button class="nav-arrow nav-up" aria-label="Previous slide">▲</button>
+      <button class="nav-dot active" data-slide="0"></button>
+      <button class="nav-dot" data-slide="1"></button>
+      <button class="nav-dot" data-slide="2"></button>
+      <button class="nav-dot" data-slide="3"></button>
+      <button class="nav-dot" data-slide="4"></button>
+      <button class="nav-dot" data-slide="5"></button>
+      <button class="nav-arrow nav-down" aria-label="Next slide">▼</button>
+    </div>
+  </div>
+
+  <script name='text/javascript' src='js/parallax.js'></script>
+  <script name='text/javascript' src='js/shootingStars.js'></script>
+  <script name='text/javascript' src='js/slides.js'></script>
+</body>
+
+</html>
