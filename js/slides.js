@@ -7,25 +7,21 @@ class SlideShow {
     this.downArrow = document.querySelector('.nav-down');
     this.slidesContainer = document.querySelector('.slides-container');
     this.totalSlides = this.slides.length;
-    this.isScrolling = false;
-    this.scrollTimeout = null;
+    this.isSlideMode = false; // Track if we're in slide navigation state
 
     this.init();
     this.updateArrowVisibility(); // Initial arrow visibility
   }
 
   init() {
-    // Add click handlers to dots
     this.dots.forEach((dot, index) => {
       dot.addEventListener('click', () => this.goToSlide(index));
     });
 
-    // Add click handlers to arrows
     this.upArrow.addEventListener('click', () => this.goToPreviousSlide());
     this.downArrow.addEventListener('click', () => this.goToNextSlide());
 
-    // Add scroll handler
-    window.addEventListener('scroll', () => this.handleScroll());
+    window.addEventListener('wheel', (ev) => this.handleWheel(ev), { passive: false });
   }
 
   updateArrowVisibility() {
@@ -44,23 +40,39 @@ class SlideShow {
     }
   }
 
-  handleScroll() {
-    // Clear the timeout if it exists
-    if (this.scrollTimeout) {
-      clearTimeout(this.scrollTimeout);
+  isAtBottom() {
+    return (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 1;
+  }
+
+  handleWheel(ev) {
+    const isAtBottom = this.isAtBottom();
+
+    // If we're in slide state or at bottom we may need to scroll
+    if (this.isSlideMode || isAtBottom) {
+      if (ev.deltaY > 0) { // Scrolling down
+        if (isAtBottom) {
+          // Prevent default scroll and trigger next slide
+          ev.preventDefault();
+          this.isSlideMode = true;
+          this.goToNextSlide();
+        }
+      } else if (ev.deltaY < 0) { // Scrolling up
+        if (this.isSlideMode || isAtBottom) {
+          // Only prevent default if we're not on the first slide
+          if (this.currentSlide > 0) {
+            ev.preventDefault();
+            this.goToPreviousSlide();
+          } else {
+            this.isSlideMode = false;
+          }
+        }
+      }
     }
 
-    // Set a timeout to run after scrolling ends
-    this.scrollTimeout = setTimeout(() => {
-      const containerRect = this.slidesContainer.getBoundingClientRect();
-      const containerBottom = containerRect.bottom;
-      const windowHeight = window.innerHeight;
-
-      // If we've scrolled past the container and we're not at the last slide
-      if (containerBottom <= windowHeight && this.currentSlide < this.totalSlides - 1) {
-        this.goToNextSlide();
-      }
-    }, 150);
+    // Exit slide state if not at bottom
+    if (!isAtBottom) {
+      this.isSlideMode = false;
+    }
   }
 
   goToNextSlide() {
@@ -76,23 +88,18 @@ class SlideShow {
   }
 
   goToSlide(index) {
-    // Remove active class from current slide and dot
     this.slides[this.currentSlide].classList.remove('active');
     this.dots[this.currentSlide].classList.remove('active');
 
-    // Update current slide index
     this.currentSlide = index;
 
-    // Add active class to new slide and dot
     this.slides[this.currentSlide].classList.add('active');
     this.dots[this.currentSlide].classList.add('active');
 
-    // Update arrow visibility
     this.updateArrowVisibility();
   }
 }
 
-// Initialize the slideshow when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   new SlideShow();
 }); 
